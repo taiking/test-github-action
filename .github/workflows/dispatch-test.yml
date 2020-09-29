@@ -44,4 +44,4 @@ jobs:
           title: Title
           body: Body
           branch: ${{ env.PR_BRANCH_NAME }}
-          base: master
+          base: ${{ github.head_ref }}
