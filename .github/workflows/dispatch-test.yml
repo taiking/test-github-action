@@ -43,4 +43,3 @@ jobs:
           title: Title
           body: Body
           branch: ${{ env.PR_BRANCH_NAME }}
-          base: ${{ env.PR_BRANCH_NAME }}
