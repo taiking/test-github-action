@@ -32,7 +32,7 @@ jobs:
       image: gableroux/unity3d:2019.4.1f1-android
     steps:
       - name: update
-        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git python-pip
+        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git python3-pip
 
       - name: checkout
         uses: actions/checkout@v2
