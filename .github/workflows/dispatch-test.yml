@@ -1,0 +1,46 @@
+name: dispatch test
+
+on:
+  repository_dispatch:
+    types: [update]
+
+env:
+  PR_BRANCH_NAME: test-branch
+
+jobs:
+  firstCommit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        
+      - name: make test1.txt 
+        run: echo "test1" > test1.txt
+
+      - name: commit
+        uses: EndBug/add-and-commit@v4
+        with:
+          ref: ${{ env.PR_BRANCH_NAME }}
+          message: 'make test1.txt'
+
+  secondCommit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        
+      - name: make test2.txt 
+        run: echo "test2" > test2.txt
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'make test2.txt'
+          title: Title
+          body: Body
+          branch: ${{ env.PR_BRANCH_NAME }}
+          base: ${{ github.head_ref }}
