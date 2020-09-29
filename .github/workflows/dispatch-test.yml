@@ -28,17 +28,25 @@ jobs:
   secondCommit:
     needs: firstCommit
     runs-on: ubuntu-latest
+    container:
+      image: gableroux/unity3d:2019.4.1f1-android
     steps:
+      - name: update
+        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git
+
       - name: checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ env.PR_BRANCH_NAME }}
 
+      - name: make test2.txt 
+        run: echo "test2" > test2.txt
+
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v1
         with:
+          token: ${{ secrets.TOKEN }}
           commit-message: 'make test2.txt'
           title: Title
           body: Body
           branch: ${{ env.PR_BRANCH_NAME }}
-          base: master
