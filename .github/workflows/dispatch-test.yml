@@ -18,6 +18,12 @@ jobs:
         
       - name: make test1.txt 
         run: echo "test1" > test1.txt
+      
+      - name: debug
+        run: python -V
+      
+      - name: debug
+        run: pip -V
 
       - name: commit
         uses: EndBug/add-and-commit@v4
@@ -32,8 +38,14 @@ jobs:
       image: gableroux/unity3d:2019.4.1f1-android
     steps:
       - name: update
-        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git python3.8
+        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git python-pip
 
+      - name: debug
+        run: python -V
+      
+      - name: debug
+        run: pip -V
+        
       - name: checkout
         uses: actions/checkout@v2
         with:
