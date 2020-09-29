@@ -14,5 +14,6 @@ jobs:
     - name: notify
       uses: peter-evans/repository-dispatch@v1
       with:
+        token: ${{ secrets.TOKEN }}
         repository: taiking/test-github-action
         event-type: update
