@@ -26,6 +26,7 @@ jobs:
           message: 'make test1.txt'
 
   secondCommit:
+    needs: update_android_dependencies
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -40,3 +41,4 @@ jobs:
           title: Title
           body: Body
           branch: ${{ env.PR_BRANCH_NAME }}
+          base: master
