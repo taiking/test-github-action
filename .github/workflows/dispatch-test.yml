@@ -32,10 +32,7 @@ jobs:
       image: gableroux/unity3d:2019.4.1f1-android
     steps:
       - name: update
-        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git
-      
-      - name: get pip
-        run: curl https://bootstrap.pypa.io/get-pip.py | python3
+        run: add-apt-repository ppa:git-core/ppa && apt update && apt install -y git python3.8
 
       - name: checkout
         uses: actions/checkout@v2
