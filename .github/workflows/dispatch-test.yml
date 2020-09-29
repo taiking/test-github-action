@@ -25,21 +25,21 @@ jobs:
           ref: ${{ env.PR_BRANCH_NAME }}
           message: 'make test1.txt'
 
-  secondCommit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+  # secondCommit:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
         
-      - name: make test2.txt 
-        run: echo "test2" > test2.txt
+  #     - name: make test2.txt 
+  #       run: echo "test2" > test2.txt
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: 'make test2.txt'
-          title: Title
-          body: Body
-          branch: ${{ env.PR_BRANCH_NAME }}
+  #     - name: Create Pull Request
+  #       uses: peter-evans/create-pull-request@v3
+  #       with:
+  #         commit-message: 'make test2.txt'
+  #         title: Title
+  #         body: Body
+  #         branch: ${{ env.PR_BRANCH_NAME }}
